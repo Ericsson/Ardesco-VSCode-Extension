@@ -29,22 +29,7 @@ TBD
 
 ## Release Notes
 
-### 0.0.1
+### 0.1.0
 
 Initial draft version.
 
-### 0.0.2
-
-Debugging added
-
-### 0.0.3
-
-- Removed board directory validation and added info window after Ardesco: Full Clean
-
-## [0.0.4]
-
-- Updated settings descriptions to be more clear.  Added autogeneration of launch.json for debug if not present. Use cmake clean-configure for Ardesco clean.
-
-## [0.0.5]
-
-- Remove 'ns' non-secure suffix for nrf52840
