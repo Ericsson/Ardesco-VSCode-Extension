@@ -1,0 +1,12 @@
+.vscode/**
+.vscode-test/**
+build/test/**
+ext-src/**
+src/**
+.gitignore
+vsc-extension-quickstart.md
+**/tsconfig.json
+**/.eslintrc.json
+**/*.map
+**/*.ts
+node_modules/@fortawesome/free-solid-svg-icons/**

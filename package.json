@@ -1,0 +1,261 @@
+{
+	"name": "ardesco",
+	"publisher": "d15iotstudio",
+	"displayName": "Ardesco",
+	"description": "Extension for Ardesco board development",
+	"version": "0.1.0",
+	"preview": true,
+	"engines": {
+		"vscode": "^1.43.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"workspaceContains:**/*.conf",
+		"onCommand:ardesco.createApplication",
+		"onCommand:ardesco.gettingStarted",
+		"onCommand:workbench.action.tasks.runTask",
+		"onView:ardescoCommands"
+	],
+	"main": "./build/ext-src/extension.js",
+	"contributes": {
+		"viewsContainers": {
+			"activitybar": [
+				{
+					"id": "ardesco-explorer",
+					"title": "Ardesco",
+					"icon": "resources/ericsson.svg"
+				}
+			]
+		},
+		"views": {
+			"ardesco-explorer": [
+				{
+					"id": "ardescoCommands",
+					"name": "Ardesco",
+					"icon": "resources/ericsson.svg"
+				}
+			]
+		},
+		"commands": [
+			{
+				"command": "ardesco.home",
+				"title": "Ardesco: Home"
+			},
+			{
+				"command": "ardesco.configure",
+				"title": "Ardesco: Configure"
+			},
+			{
+				"command": "ardesco.clean",
+				"title": "Ardesco: Clean/Reconfigure"
+			},
+			{
+				"command": "ardesco.build",
+				"title": "Ardesco: Build"
+			},
+			{
+				"command": "ardesco.flash",
+				"title": "Ardesco: Flash"
+			},
+			{
+				"command": "ardesco.debug",
+				"title": "Ardesco: Debug"
+			},
+			{
+				"command": "ardesco.board",
+				"title": "Ardesco: Select board target"
+			},
+			{
+				"command": "ardesco.board.chip",
+				"title": "Ardesco: Select board chip target"
+			},
+			{
+				"command": "ardesco.createApplication",
+				"title": "Ardesco: Create Application"
+			},
+			{
+				"command": "ardesco.install",
+				"title": "Ardesco: Install"
+			},
+			{
+				"command": "ardesco.checkUpdates",
+				"title": "Ardesco: Check Updates"
+			},
+			{
+				"command": "ardesco.showOutputLog",
+				"title": "Ardesco: Show Output Log"
+			},
+			{
+				"command": "ardesco.openTerminal",
+				"title": "Ardesco: Open Terminal"
+			}
+		],
+		"keybindings": [
+			{
+				"key": "f7",
+				"command": "ardesco.build"
+			},
+			{
+				"key": "shift+f7",
+				"command": "ardesco.buildWithTarget"
+			}
+		],
+		"configuration": {
+			"title": "Ardesco",
+			"properties": {
+				"ardesco.sdk.base": {
+					"type": "string",
+					"default": "undefined",
+					"description": "Path to Ardesco SDK base directory"
+				},
+				"ardesco.zephyr.base": {
+					"type": "string",
+					"default": "undefined",
+					"description": "Path to Zephyr base directory"
+				},
+				"ardesco.board.name": {
+					"type": "string",
+					"description": "Select board for development",
+					"enum": [
+						"Please select...",
+						"Ardesco Prototype",
+						"Ardesco Combi",
+						"Ardesco Combi Dev",
+						"Ardesco Mini",
+						"Nordic 9160 DK",
+						"Nordic Thingy 91"
+					]
+				},
+				"ardesco.board.chip": {
+					"type": "string",
+					"description": "Select chip target for development",
+					"enum": [
+						"Please select...",
+						"nRF 9160",
+						"nRF 52840"
+					]
+				},
+				"ardesco.secureBuild": {
+					"type": "boolean",
+					"description": "Use secure mode build",
+					"default": false
+				},
+				"ardesco.gnuarmembToolchainPath": {
+					"type": "string",
+					"default": "undefined",
+					"description": "GNU ARM embedded toolchain base directory"
+				},
+				"ardesco.JLinkGDBServerPath": {
+					"type": "string",
+					"default": "undefined",
+					"description": "Path to SEGGER JLink GDB executable (JLinkGDBServerCL.exe or JLinkGDBServerCLExe), auto-detected if not defined."
+				},
+				"ardesco.nrfjprog": {
+					"type": "string",
+					"default": "undefined",
+					"description": "Path to nRF JProg, required for flashing support, auto-detected if not defined."
+				},
+				"ardesco.updateServer": {
+					"type": "string",
+					"default": "https://f002.backblazeb2.com/file/ardesco",
+					"description": "Check for updates."
+				},
+				"ardesco.checkForUpdates": {
+					"type": "boolean",
+					"default": true,
+					"description": "Check for updates when launching the extension."
+				},
+				"ardesco.configureOnConfigChanges": {
+					"type": "string",
+					"enum": [
+						"ask",
+						"automatic",
+						"manual"
+					],
+					"enumDescriptions": [
+						"Prompt for re-configuration for each config change.",
+						"Automatic handling of config changes by re-configuring before building.",
+						"Never prompt for config changes, user responsible for re-configuration."
+					],
+					"default": "automatic",
+					"description": "Behavior action for configuration changes."
+				},
+				"ardesco.flashOnDebug": {
+					"type": "boolean",
+					"default": false
+				}
+			}
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"start": "craco start",
+		"compile": "craco build && tsc -p tsconfig-extension.json",
+		"compile-ext": "tsc -p tsconfig-extension.json",
+		"lint": "eslint src --ext ts",
+		"watch": "tsc -watch -p ./",
+		"pretest": "npm run compile && npm run lint",
+		"test": "node ./build/test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/fs-extra": "^9.0.1",
+		"@types/glob": "^7.1.1",
+		"@types/got": "^9.6.11",
+		"@types/mocha": "^7.0.1",
+		"@types/node-fetch": "^2.5.7",
+		"@types/node": "^12.11.7",
+		"@types/react": "^16.3.14",
+		"@types/react-dom": "^16.0.5",
+		"@types/semver": "^7.2.0",
+		"@types/unzipper": "^0.10.3",
+		"@types/vscode": "^1.43.0",
+		"@types/which": "^1.3.2",
+		"@typescript-eslint/eslint-plugin": "^2.18.0",
+		"@typescript-eslint/parser": "^2.18.0",
+		"eslint": "^6.8.0",
+		"glob": "^7.1.6",
+		"mocha": "^7.0.1",
+		"react-scripts": "^3.4.1",
+		"rewire": "^5.0.0",
+		"terser": "^4.7.0",
+		"typescript": "^3.7.5",
+		"vscode-test": "^1.3.0"
+	},
+	"extensionDependencies": [
+		"ms-vscode.cpptools",
+		"ms-vscode.cmake-tools",
+		"twxs.cmake",
+		"marus25.cortex-debug"
+	],
+	"dependencies": {
+		"@ant-design/icons": "^4.2.1",
+		"@craco/craco": "^5.6.4",
+		"@fortawesome/fontawesome-svg-core": "^1.2.29",
+		"@fortawesome/free-solid-svg-icons": "^5.13.1",
+		"@fortawesome/react-fontawesome": "^0.1.11",
+		"@types/js-yaml": "^3.12.5",
+		"abort-controller": "^3.0.0",
+		"antd": "^4.4.1",
+		"craco-antd": "^1.18.1",
+		"dayjs": "^1.8.29",
+		"fs-extra": "^9.0.0",
+		"got": "^11.3.0",
+		"js-yaml": "^3.14.0",
+		"node-fetch": "^2.6.0",
+		"os-locale": "^5.0.0",
+		"react": "^16.13.1",
+		"react-dom": "^16.13.1",
+		"semver": "^7.3.2",
+		"timeago.js": "^4.0.2",
+		"unzipper": "^0.10.11",
+		"which": "^2.0.2"
+	},
+	"browserslist": [
+		">0.2%",
+		"not dead",
+		"not ie <= 11",
+		"not op_mini all"
+	]
+}

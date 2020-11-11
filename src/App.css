@@ -1,0 +1,188 @@
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+html {
+  display: table;
+  margin: auto;
+}
+
+body {
+  display: table-cell;
+  vertical-align: middle;
+  color: var(--vscode-editor-foreground);
+  background-color: var(--vscode-editor-background);
+}
+
+h1,h2,h3,h4,h5,h6 {
+  color: var(--vscode-editor-foreground);
+}
+
+ul {
+  list-style-type: none;
+  padding-inline-start: 0;
+}
+
+li {
+  margin-top: 14px;
+}
+
+.App {
+  text-align: center;
+}
+
+.App a {
+  color: var(--vscode-textLink-activeForeground);
+  text-decoration: none;
+}
+
+.App-path {
+  font-size: 0.8em;
+  color: #8c8b8b;
+}
+
+.App-header {
+  margin-top: -30px;
+}
+
+.App-logo {
+  height: 100px;
+}
+
+.App-logo[data-vscode-theme-kind="vscode-dark"] {
+  filter: hue-rotate(270deg) sepia(1) invert(1)
+}
+
+.App-leftside {
+  float: left;
+  width: 50%;
+}
+
+.App-contents {
+  text-align: left;
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 30px;
+}
+
+.App-heading {
+  text-align: center;
+  margin-top: -10px;
+}
+
+.App-title {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #444;
+}
+
+.App-subtitle {
+  font-size: 1.25em;
+  color: #777;
+  margin-left: 15px;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+#App-buttons {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin: 50px;
+}
+
+.App-button {
+  background-color: var(--vscode-sideBar-background, #eee);
+  font-size: 1.2em;
+  height: 80px;
+  border-style: none;
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+
+  /* Add shadows to create the "card" effect */
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  margin: 10px 20px;
+}
+
+/* On mouse-over, add a deeper shadow */
+.App-button:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.App-button-container {
+  padding-left: 20px;
+  text-align: left;
+}
+
+.App-button-main {
+  padding-top: 15px;
+  margin-bottom: 5px;
+}
+
+.App-button-sub {
+  font-size: 0.8em;
+  color: #8c8b8b;
+}
+
+.App-separator-heading {
+  margin: 50px;
+}
+
+.App-separator {
+  border: 0;
+  height: 2px; 
+  background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+.App-card {
+  /* Add shadows to create the "card" effect */
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  margin: 0 20px;
+  flex: 1 0;
+}
+
+/* On mouse-over, add a deeper shadow */
+.App-card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.App-card {
+  background-color: white;
+}
+
+/* Add some padding inside the card container */
+.App-card-container {
+  text-align: left;
+  padding: 2px 16px;
+}
+
+.App-card-image {
+  width: 100%;
+  object-fit: cover;
+}
+
+.App-card-separator {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  height: 1px; 
+  background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+}
+
+.App-posts {
+  margin: 50px;
+  display: flex;
+  justify-content: center;
+}
+
+.App-folder-row {
+  height: 80px;
+}
